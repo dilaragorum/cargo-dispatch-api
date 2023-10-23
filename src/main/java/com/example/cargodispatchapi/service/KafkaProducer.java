@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CargoChangePublisher {
+public class KafkaProducer {
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final JsonConverter jsonConverter;
     public <T> void publish(KafkaMessage<T>kafkaMessage) {

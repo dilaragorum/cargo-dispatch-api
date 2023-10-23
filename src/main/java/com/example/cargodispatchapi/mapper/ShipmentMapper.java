@@ -1,7 +1,7 @@
 package com.example.cargodispatchapi.mapper;
 
 import com.example.cargodispatchapi.model.ShipmentEvent;
-import com.example.cargodispatchapi.model.Shipment;
+import com.example.cargodispatchapi.model.DispatchRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public interface ShipmentMapper {
     ShipmentMapper MAPPER = Mappers.getMapper(ShipmentMapper.class);
 
-    ShipmentEvent mapToShipmentEvent(Shipment shipment);
+    ShipmentEvent mapToShipmentEvent(DispatchRequest dispatchRequest);
 }

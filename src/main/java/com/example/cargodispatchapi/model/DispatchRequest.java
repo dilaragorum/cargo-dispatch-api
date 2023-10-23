@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class Shipment {
+public class DispatchRequest {
     private int shipmentId;
     private String cargoType;
     private String processType;

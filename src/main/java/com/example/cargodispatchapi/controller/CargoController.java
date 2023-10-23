@@ -1,6 +1,6 @@
 package com.example.cargodispatchapi.controller;
 
-import com.example.cargodispatchapi.model.Shipment;
+import com.example.cargodispatchapi.model.DispatchRequest;
 import com.example.cargodispatchapi.service.CargoService;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ public class CargoController {
     private final CargoService cargoService;
 
     @PostMapping
-    public void DispatchCargoMessage(@RequestBody Shipment shipment) {
-        cargoService.DispatchCargoMessage(shipment);
+    public void DispatchCargoMessage(@RequestBody DispatchRequest dispatchRequest) {
+        cargoService.DispatchCargoMessage(dispatchRequest);
     }
 }
