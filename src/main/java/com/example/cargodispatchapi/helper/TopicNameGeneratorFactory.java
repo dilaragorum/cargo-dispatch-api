@@ -1,15 +1,16 @@
 package com.example.cargodispatchapi.helper;
 
+import com.example.cargodispatchapi.exception.InvalidCargoException;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.List;
 
 @Component
 public class TopicNameGeneratorFactory {
-    private final Map<String, TopicNameGenerator> topicNameGeneratorMap;
+    private final List<TopicNameGenerator> topicNameGenerators;
 
-    public TopicNameGeneratorFactory(Map<String, TopicNameGenerator> topicNameGeneratorMap) {
-        this.topicNameGeneratorMap = topicNameGeneratorMap;
+    public TopicNameGeneratorFactory(List<TopicNameGenerator> topicNameGenerators) {
+        this.topicNameGenerators = topicNameGenerators;
     }
 
     public String getTopicName(String cargoProvider) {
@@ -17,6 +18,9 @@ public class TopicNameGeneratorFactory {
     }
 
     private TopicNameGenerator getTopicGenerator(String cargoProvider) {
-        return topicNameGeneratorMap.get(cargoProvider);
+        return topicNameGenerators.stream()
+                .filter((topicNameGenerator) -> topicNameGenerator.isEligible(cargoProvider))
+                .findFirst()
+                .orElseThrow(() -> new InvalidCargoException("This cargo is not valid"));
     }
 }
